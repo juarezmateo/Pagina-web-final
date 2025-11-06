@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Panel de Control Demo</title>
+  <link rel="stylesheet" href="../Dashboard Demo/dashboard.css" />
+   <link rel="icon" href="../assets/logo.ico" />
+</head>
+<body>
+  <div class="scene" id="scene">
+    <img class="bg" src="../assets/fondo.png" alt="Fondo">
+     
+
+    <!-- Hotspots -->
+    <button id="hot-lamp" class="hotspot"></button>
+    <button id="hot-ac" class="hotspot"></button>
+    <button id="hot-plant" class="hotspot"></button>
+    <button id="hot-cam" class="hotspot">
+      <div id="recordCircle"></div>
+      <div id="recordCircleMobile"></div>
+    </button>
+
+    <!-- Overlays -->
+    <div id="lampGlow" class="overlay"></div>
+    <div id="acDisplay" class="overlay">22°C</div>
+    <div id="acWind" class="overlay"></div>
+    <div id="dropsWrap" class="drops-wrap overlay">
+      <div class="drop d1"></div><div class="drop d2"></div><div class="drop d3"></div>
+    </div>
+  
+    <div id="camDot" class="overlay"></div>
+
+    <!-- Panel -->
+    <div class="panel">
+      <header>
+        <span id="panelTitle">Smart Home — Dashboard</span>
+        <select id="langSelect">
+          <option value="es">Español</option>
+          <option value="en">English</option>
+          <option value="pt">Português</option>
+        </select>
+      </header>
+
+<div class="section" style="border:none;"><div class="row"><div>
+        <div id="camTitle">📸 Cámara</div><div id="camSmall" class="tiny">Activar indicador</div>
+      </div><button id="btnCam" class="btn">Activar</button></div></div>
+
+<div class="section"><div class="row"><div style="flex:1 1 auto;">
+        <div id="acTitle">🌡️ Aire acondicionado</div><div id="acSmall" class="tiny">Temperatura objetivo</div>
+      </div><button id="btnACToggle" class="btn ghost">Encender aire</button></div>
+      <div style="margin-top:8px;"><input id="tempRange" type="range" min="16" max="30" value="22"/>
+      <div class="row" style="margin-top:6px;"><div class="tiny">16°C</div><div id="tempPanel" 
+      class="value">22°C</div><div class="tiny">30°C</div></div></div></div>
+
+      <div class="section"><div class="row"><div>
+        <div id="lampTitle">💡 Velador</div><div id="lampSmall" class="tiny">Encender / Apagar</div>
+      </div><button id="btnLamp" class="btn">Encender</button></div></div>
+
+      
+
+      <div class="section"><div class="row"><div>
+        <div id="plantTitle">🌿 Riego</div><div id="plantSmall" class="tiny">Elegí intensidad o tocá la planta</div>
+      </div><button id="btnWaterOff" class="btn ghost">Apagar</button></div>
+      <div class="segmented" style="margin-top:8px;">
+        <button id="btnWaterPoco" class="btn secondary">Riego Poco</button>
+        <button id="btnWaterMedio" class="btn secondary">Riego Medio</button>
+        <button id="btnWaterMucho" class="btn secondary">Riego Mucho</button>
+      </div></div>
+
+      
+    </div>
+  </div>
+  <script src="../Dashboard Demo/dashboard.js"></script>
+</body>
+</html>

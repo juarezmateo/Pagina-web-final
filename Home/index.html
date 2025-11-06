@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SH System - Smart Company</title>
+  <meta name="description" content="Smart Home System: solución moderna y minimalista para controlar luces, temperatura, riego y seguridad del hogar.">
+  <meta property="og:title" content="Smart Home System — Smart Company" />
+  <meta property="og:description" content="Control de luces, temperatura, riego y seguridad. 'El futuro de tu hogar, hoy'." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="../assets/logo.ico" />
+  <link rel="stylesheet" href="../Home/styles.css" />
+</head>
+<body>
+  <!-- Barra de progreso de scroll -->
+<div id="scroll-progress"></div>
+
+  <!-- Barra de navegación -->
+  <header class="site-header">
+  <a class="brand" href="#home">
+    <img src="../assets/logo.png" alt="Logo Smart Company" class="brand-logo" />
+    <span class="brand-title">Smart Home System</span>
+  </a>
+
+  <!-- NUEVO: botón de idioma al lado del logo -->
+  <div class="header-controls">
+    <button id="lang-toggle" aria-label="Cambiar idioma">🇪🇸</button>
+  </div>
+
+  <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  <nav class="site-nav" id="site-nav" aria-label="Principal">
+    <a href="#home" data-i18n="nav.home">Inicio</a>
+    <a href="#services" data-i18n="nav.services">Servicios</a>
+    <a href="#about" data-i18n="nav.about">¿Quiénes somos?</a>
+    <a href="../Dashboard Demo/dashboard.html" target="_blank" rel="noopener" class="btn btn--ghost" data-i18n="nav.demo">Panel de Control Demo</a>
+    <a href="#support" data-i18n="nav.faq">FAQ</a>
+    <a href="#contact" data-i18n="nav.contact">Contacto</a>
+    <a href="#adquirir" class="btnNuevo" data-i18n="nav.buy">Adquirir</a>
+  </nav>
+</header>
+
+  <!-- Hero / Home -->
+  <main>
+    
+    <section id="home" class="hero container">
+      <!-- Slider decorativo -->
+      <div class="slider">
+        <div class="slides">
+          <img src="../assets/imagen1.png" alt="Smart Home Sala 1">
+          <img src="../assets/imagen2.png" alt="Smart Home Sala 2">
+          <img src="../assets/imagen3.png" alt="Smart Home Habitación">
+          <img src="../assets/imagen4.png" alt="Smart Home Habitación2dasd">
+        </div>
+      </div>
+
+      <!-- Texto principal -->
+      <div class="hero-text">
+        <h1>El futuro de tu hogar, hoy</h1>
+        <p class="lead">
+          Un Sistema inteligente para automatizar tareas simples: luces, temperatura, riego y seguridad — todo desde una aplicación.
+        </p>
+        <div class="cta">
+          <a href="#services" class="btn btnEspecial">Ver servicios</a>
+          <a href="#contact" class="btn btn--ghost">Hablar con nosotros</a>
+        </div>
+        <ul class="chips">
+          <li>Proyecto: <strong>Smart Home System</strong></li>
+          <li>Empresa: <strong>Smart Company</strong></li>
+          <li>Duración: <strong>1 año</strong></li>
+          <li>Inicio: <strong>18/05/2025</strong></li>
+        </ul>
+      </div>
+    </section>
+
+<section id="stats" class="section container reveal">
+  <header class="section-header center">
+    <h2>Estadísticas rápidas</h2>
+    <p>Impacto del Smart Home System hasta ahora</p>
+  </header>
+
+  <div class="grid four stats-grid">
+    <div class="card stat-card">
+      <span class="stat-number" data-target="15">0</span>
+      <p class="stat-label">Usuarios activos</p>
+    </div>
+    <div class="card stat-card">
+      <span class="stat-number" data-target="18">0</span>
+      <p class="stat-label">Sensores instalados</p>
+    </div>
+    <div class="card stat-card">
+      <span class="stat-number" data-target="85">0</span>
+      <p class="stat-label">% de ahorro energético</p>
+    </div>
+    <div class="card stat-card">
+      <span class="stat-number" data-target="20">0</span>
+      <p class="stat-label">Proyectos piloto</p>
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- Quiénes somos -->
+    <section id="about" class="section container">
+  <header class="section-header">
+    <h2 data-i18n="about.title">¿Quiénes somos?</h2>
+    <p data-i18n="about.lead">
+      Somos <strong>Smart Company</strong>, un equipo estudiantil que desarrolla <em>Smart Home System</em>, una solución tecnológica, moderna y minimalista para automatizar hogares.
+    </p>
+  </header>
+  <div class="grid two">
+    <div>
+      <h3 data-i18n="about.history">Historia</h3>
+      <p ddata-i18n="about.history.text" class="history-text">
+        Nacimos como proyecto educativo con el objetivo de crear un sistema accesible y predecible para cualquier persona con hogar.
+      </p>
+
+      <h3 data-i18n="about.mission">Misión</h3>
+      <p data-i18n="about.mission.text">
+        Facilitar actividades del hogar para ahorrar tiempo y permitir que el usuario haga lo que quiera.
+      </p>
+
+      <h3 data-i18n="about.vision">Visión</h3>
+      <p data-i18n="about.vision.text">
+        Ser una referencia escolar en soluciones domóticas simples, fiables y escalables.
+      </p>
+    </div>
+    <div>
+      <h3 data-i18n="about.values">Valores</h3>
+      <ul class="checklist">
+        <li data-i18n="about.values.1">Usabilidad y accesibilidad</li>
+        <li data-i18n="about.values.2">Responsabilidad con las entregas</li>
+        <li data-i18n="about.values.3">Transparencia y aprendizaje continuo</li>
+        <li data-i18n="about.values.4">Seguridad y privacidad</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+    <!-- Servicios -->
+    <section id="services" class="section container">
+      <header class="section-header">
+        <h2>Servicios</h2>
+        <p>Subsistemas del <strong>Smart Home System</strong> incluidos en la solución informativa del sitio.</p>
+      </header>
+
+      <div class="grid four service-cards">
+        <article class="card"><div class="icon">💡</div><h3>Control de luces</h3><p>Por condiciones o por tiempo. Programá escenas y horarios para cada ambiente.</p></article>
+        <article class="card"><div class="icon">🌡️</div><h3>Temperatura</h3><p>Regulación según clima exterior e interior. Ahorro energético automático.</p></article>
+        <article class="card"><div class="icon">🌱</div><h3>Riego de plantas</h3><p>Configurable por tipo de planta y humedad del suelo. Recordatorios y monitoreo.</p></article>
+        <article class="card"><div class="icon">🛡️</div><h3>Seguridad</h3><p>Registro de personas o mascotas con alertas locales. Privacidad como pilar.</p></article>
+      </div>
+
+      <div class="center">
+        <h1></h1>
+        <a href="#adquirir" class="btn btnEspecial btnAdquirir">Adquirir producto</a>
+        <p class="small note">El presente sitio es <strong>informativo</strong>. El control del hogar será mediante una <strong>aplicación dedicada</strong>.</p>
+      </div>
+    </section>
+
+
+
+
+
+<section id="testimonios" class="section container reveal">
+  <header class="section-header">
+    <h2>Opiniones</h2>
+    <p>Que dicen sobre nosotros.</p>
+  </header>
+
+  <div class="t-slider" aria-roledescription="carousel">
+    <div class="t-track">
+      <!-- Slide 1 -->
+      <article class="card t-card">
+        <h3 class="t-name">Juan Roman</h3>
+        <img src="../assets/user1.jpeg" alt="Foto de Ana García" class="t-avatar" />
+        <p class="t-text">“Es fácil de usar y me ayudó a ahorrar en electricidad.”</p>
+      </article>
+
+      <!-- Slide 2 -->
+      <article class="card t-card">
+        <h3 class="t-name">Luis M.</h3>
+        <img src="../assets/user3.jpeg" alt="Foto de Juan Pérez" class="t-avatar" />
+        <p class="t-text">“Automatizar el riego me cambió la vida.”</p>
+      </article>
+
+      <!-- Slide 3 -->
+      <article class="card t-card">
+        <h3 class="t-name">María López</h3>
+        <img src="../assets/user2.jpeg" alt="Foto de María López" class="t-avatar" />
+        <p class="t-text">“La app es intuitiva, hasta mis padres la usan.”</p>
+      </article>
+    </div>
+
+    <!-- Controles -->
+    <button class="t-btn t-prev" aria-label="Anterior">❮</button>
+    <button class="t-btn t-next" aria-label="Siguiente">❯</button>
+
+    <!-- Indicadores -->
+    <div class="t-dots" role="tablist" aria-label="Indicadores de testimonios">
+      <button class="t-dot active" aria-label="Ir a testimonio 1"></button>
+      <button class="t-dot" aria-label="Ir a testimonio 2"></button>
+      <button class="t-dot" aria-label="Ir a testimonio 3"></button>
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- Noticias -->
+<section id="news" class="section container">
+  <header class="section-header">
+    <h2>Noticias y actualizaciones</h2>
+    <p>Avances del proyecto y nuevas funciones.</p>
+  </header>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <span class="tl-date">18 Mayo 2025</span>
+      <h4>Inicio del proyecto</h4>
+      <p>Se constituye el equipo fundador y se definen los primeros objetivos del <strong>Smart Home System</strong>. 
+      Se prioriza la incorporación de especialistas en domótica, seguridad digital y experiencia de usuario para sentar las bases del ecosistema.</p>
+    </div>
+
+    <div class="tl-item">
+      <span class="tl-date">Q1 2025</span>
+      <h4>Diseño de subsistemas</h4>
+      <p>Se elaboran las especificaciones técnicas de los módulos principales:</p>
+      <ul>
+        <li>Control de <strong>luces inteligentes</strong> con horarios automáticos.</li>
+        <li>Gestión de <strong>climatización</strong> según temperatura ambiente.</li>
+        <li><strong>Riego automatizado</strong> adaptable a humedad y clima.</li>
+        <li><strong>Seguridad inteligente</strong> con cámaras y sensores de movimiento.</li>
+      </ul>
+      <p>Se realizan pruebas de usabilidad con usuarios piloto para mejorar la experiencia.</p>
+    </div>
+
+    <div class="tl-item">
+      <span class="tl-date">Q2 2025</span>
+      <h4>Lanzamiento del sitio web</h4>
+      <p>Se publica la primera versión de la web con secciones institucionales, catálogo de servicios y un formulario de contacto. 
+      Este paso marca el inicio de nuestra presencia digital y la comunicación activa con la comunidad interesada.</p>
+    </div>
+
+    <div class="tl-item">
+      <span class="tl-date">Q3 2025</span>
+      <h4>Integración con proveedores</h4>
+      <p>Se establecen acuerdos estratégicos con fabricantes de hardware para garantizar compatibilidad con sensores y dispositivos estándar. 
+      El objetivo es que los usuarios puedan conectar fácilmente sus equipos actuales sin reemplazos costosos.</p>
+    </div>
+
+    <div class="tl-item">
+      <span class="tl-date">Q4 2025</span>
+      <h4>Aplicación móvil 1.0 (Próximamente)</h4>
+      <p>Se trabaja en la primera versión Final de la <strong>app oficial</strong>, que permitirá controlar luces, cámaras, clima y rutinas personalizadas 
+      como “modo noche” o “modo vacaciones”. Será el núcleo central de la experiencia del hogar inteligente.</p>
+    </div>
+  </div>
+</section>
+
+
+    <!-- FAQ -->
+<section id="support" class="section container">
+  <header class="section-header">
+    <h2>FAQ</h2>
+    <p>Preguntas frecuentes.</p>
+  </header>
+
+  <details class="faq">
+    <summary>¿La web controla mi casa?</summary>
+    <p>No. Esta web cumple una función de <strong>marketing e información</strong>. 
+    El control real de los dispositivos se realizará mediante una <strong>app exclusiva</strong>.</p>
+  </details>
+
+  <details class="faq">
+    <summary>¿Qué dispositivos son compatibles?</summary>
+    <p>El sistema está diseñado para trabajar con <strong>hardware estándar</strong>, incluyendo:</p>
+    <ul>
+      <li>Sensores de temperatura</li>
+      <li>Aire Acondicionados</li>
+      <li>Sistemas de Riego</li>
+      <li>Cámaras inteligentes</li>
+    </ul>
+    <p>Se prioriza la <strong>interoperabilidad</strong> para que el usuario no dependa de un único proveedor.</p>
+  </details>
+
+  <details class="faq">
+    <summary>¿Cómo protegen mis datos?</summary>
+    <p>La seguridad es una prioridad. El sistema contempla:</p>
+    <ul>
+      <li><strong>Privacidad por defecto:</strong> se recolecta solo la información mínima necesaria.</li>
+      <li><strong>Cifrado de extremo a extremo:</strong> toda comunicación entre dispositivos y la app está protegida.</li>
+      <li><strong>Actualizaciones automáticas:</strong> se aplican mejoras continuas para evitar vulnerabilidades.</li>
+    </ul>
+  </details>
+
+  <details class="faq">
+    <summary>¿Qué pasa si se corta Internet?</summary>
+    <p>El sistema mantiene funciones básicas en modo local, como encender/apagar luces y controlar cerraduras. 
+    Sin embargo, la gestión remota avanzada requiere conexión a Internet.</p>
+  </details>
+
+  <details class="faq">
+    <summary>¿Habrá soporte en varios idiomas?</summary>
+    <p>Sí. Inicialmente estará disponible en <strong>español, inglés y portugués</strong>, con planes de expansión a más idiomas según la demanda.</p>
+  </details>
+
+  <details class="faq">
+    <summary>¿Puedo ampliar mi sistema en el futuro?</summary>
+    <p>Claro. El Smart Home System está diseñado para ser <strong>modular y escalable</strong>. 
+    Podés comenzar solo con luces y seguridad, y luego agregar climatización, riego y nuevas funciones.</p>
+  </details>
+</section>
+
+
+    <!-- Adquirir -->
+    <section id="adquirir" class="section container">
+      <header class="section-header"><h2>Adquirir producto</h2><p>Recibí más información detallada sobre el Smart Home System.</p></header>
+      <div class="grid two">
+        <div class="card">
+          <h3>Incluye</h3>
+          <ul class="bullets"><li>Asesoramiento de instalación</li><li>Paquete inicial de sensores</li><li>Aplicación móvil dedicada</li><li>Garantía académica del proyecto</li></ul>
+        </div>
+        <form id="adquire-form" class="card form" aria-describedby="adquire-desc">
+          <p id="adquire-desc" class="small">Completá tus datos y te contactamos.</p>
+          <label>Nombre y apellido<input type="text" name="name" placeholder="Ej: Ana García" required></label>
+          <label>Correo electrónico<input type="email" name="email" placeholder="nombre@dominio.com" required></label>
+          <label>Mensaje<textarea name="message" rows="4" placeholder="Contanos tu interés"></textarea></label>
+          <button type="submit" class="btn">Solicitar info</button>
+          <p class="small">Al enviar, se abrirá tu cliente de correo con el resumen.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contact" class="section container center">
+      <header class="section-header"><h2>Contacto</h2><p>Escribinos para consultas o soporte.</p></header>
+      <div class="grid two">
+        <form id="contact-form" class="card form" aria-describedby="contact-desc">
+          <p id="contact-desc" class="small">Completar Formulario</p>
+          <label>Nombre<input type="text" name="name" placeholder="Tu nombre" required></label>
+          <label>Correo<input type="email" name="email" placeholder="tu@email.com" required></label>
+          <label>Asunto<input type="text" name="subject" placeholder="Tema de la consulta" required></label>
+          <label>Mensaje<textarea name="message" rows="5" placeholder="Escribí tu mensaje..." required></textarea></label>
+          <button type="submit" class="btn">Enviar</button>
+          <p class="small">Atención: Lun–Vie 9–18 h (ARG)</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+  <div class="container footer-grid">
+
+    <!-- Izquierda -->
+    <div class="footer-left">
+      <div class="footer-brand">
+        <img src="../assets/logo.png" alt="Logo Smart Company" class="footer-logo" />
+        <h1 class="small">Smart Company</h1>
+      </div>
+    </div>
+
+    <!-- Centro -->
+    <div class="footer-center">
+      <div class="footer-social">
+
+        <!-- Correo -->
+        <a href="mailto:contacto.smarthome@example.com" target="_blank" rel="noopener" aria-label="Correo electrónico">
+          <svg xmlns="http://www.w3.org/2000/svg" class="social-icon" viewBox="0 0 24 24">
+            <defs>
+              <linearGradient id="outlookGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0072C6"/>
+                <stop offset="50%" stop-color="#2F93E0"/>
+                <stop offset="100%" stop-color="#50B4F2"/>
+              </linearGradient>
+            </defs>
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 
+                     2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 
+                     2-2zm0 2v.01L12 13l8-6.99V6H4zm0 
+                     12h16V8l-8 6-8-6v10z" fill="currentColor"/>
+          </svg>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://instagram.com/tu_usuario" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" class="social-icon" viewBox="0 0 24 24">
+            <defs>
+              <linearGradient id="instaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#feda75"/>
+                <stop offset="25%" stop-color="#fa7e1e"/>
+                <stop offset="50%" stop-color="#d62976"/>
+                <stop offset="75%" stop-color="#962fbf"/>
+                <stop offset="100%" stop-color="#4f5bd5"/>
+              </linearGradient>
+            </defs>
+            <path d="M7 2C4.243 2 2 4.243 2 
+                     7v10c0 2.757 2.243 5 5 
+                     5h10c2.757 0 5-2.243 
+                     5-5V7c0-2.757-2.243-5-5-5H7zm0 
+                     2h10c1.654 0 3 1.346 3 
+                     3v10c0 1.654-1.346 3-3 
+                     3H7c-1.654 0-3-1.346-3-3V7c0-1.654 
+                     1.346-3 3-3zm5 2a5 5 0 100 10 5 
+                     5 0 000-10zm0 2a3 3 0 110 
+                     6 3 3 0 010-6zm4.5-2a1.5 1.5 
+                     0 100 3 1.5 1.5 0 000-3z" fill="currentColor"/>
+          </svg>
+        </a>
+      </div>
+
+      <nav class="footer-nav" aria-label="Legal">
+        <a href="#about">Quiénes somos</a>
+        <a href="#services">Servicios</a>
+        <a href="#support">FAQ</a>
+        <a href="#contact">Contacto</a>
+      </nav>
+    </div>
+
+    <!-- Copy -->
+    <div class="footer-copy">
+      <p class="small muted">© 2025 Smart Company.Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Botón flotante: Subir arriba -->
+<button id="back-to-top" class="toTop" aria-label="Volver arriba" title="Volver arriba">↑</button>
+
+  <script src="../Home/script.js"></script>
+</body>
+</html>
+
+

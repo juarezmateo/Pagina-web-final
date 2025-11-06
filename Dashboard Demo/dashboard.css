@@ -1,0 +1,705 @@
+/* Styles del Smart Home Dashboard */
+:root
+{--accent:#2563eb;--accent-2:#0ea5e9;
+  --panel:rgba(255,255,255,0.92);
+  --danger:#ef4444;}
+
+body{margin:0;
+  font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
+  background:#0f1115;display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;}
+
+.scene{position:relative;
+  width:min(1100px,96vw);
+  aspect-ratio:16/9;
+  border-radius:16px;
+  overflow:hidden;
+  background:#000;
+  box-shadow:0 24px 60px rgba(0,0,0,0.6);}
+
+.bg{position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(0.97);
+  transition:.3s;}
+
+  @media (max-width: 600px) {
+  .bg {
+    content: url("../assets/fondo_vertical.png");
+    background: none; /* elimina cualquier fondo que pueda quedar */
+    object-fit: contain;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.overlay{position:absolute;
+  pointer-events:none;}
+
+.hotspot{position:absolute;
+  background:transparent;
+  border:none;
+  cursor:pointer;}
+
+#hot-lamp{left:21.7%;
+   top:54%;
+    width:120px;
+     height:140px;}
+
+#hot-ac{left:21.9%;
+   top:7%; 
+   width:220px;
+    height:100px;}
+
+#hot-plant{left:8%;
+   bottom:12%;
+    width:130px;
+     height:160px;}
+
+#hot-cam{right:27.5%; 
+  top:10%; 
+  width:95px; 
+  height:95px;}
+/* Lámpara */
+#lampGlow{width:170px;
+  height:170px;
+  border-radius:50%;
+  background:radial-gradient(circle at 50% 25%,rgba(255,245,180,0.95),rgba(255,210,60,0.45),rgba(255,180,60,0.06) 70%);
+  filter:blur(18px);
+  opacity:0;
+  transition:.3s;
+  mix-blend-mode:screen;}
+
+.lamp-on #lampGlow{opacity:1;}
+
+/* Aire */
+#acDisplay{min-width:70px;
+  height:34px;
+  padding:4px 10px;
+  background:rgba(10,14,22,0.55);
+  color:#7dd3fc;
+  font-weight:800;
+  font-size:18px;
+  border-radius:8px;
+  text-shadow:0 0 8px #38bdf8;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  transition:.25s;}
+
+.ac-on #acDisplay{opacity:1;}
+
+#acWind{width:160px;
+  height:8px;
+  border-radius:8px;
+  background:linear-gradient(90deg,rgba(125,211,252,0),rgba(125,211,252,.8),rgba(125,211,252,0));
+  opacity:0;}
+
+.ac-on #acWind{opacity:.85;animation:drift 2s ease-in-out infinite alternate;}
+
+@keyframes drift{from{transform:translateX(-12px);}to{transform:translateX(12px);}}
+
+/* Riego */
+
+.drops-wrap{position:absolute;
+  width:36px;
+  height:80px;
+  opacity:0;
+  transition:opacity .2s;}
+
+.watering .drops-wrap{opacity:1;}
+
+.drop{position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  width:8px;
+  height:14px;
+  border-radius:50% 50% 60% 60%;
+  background:rgba(125,211,252,0.9);
+  filter:drop-shadow(0 2px 2px rgba(0,0,0,0.25));
+  opacity:0;}
+
+@keyframes fall-slow{0%{transform:translate(-50%,-6px);opacity:.95;}100%{transform:translate(-50%,22px);opacity:0;}}
+@keyframes fall-med{0%{transform:translate(-50%,-6px);opacity:.95;}100%{transform:translate(-50%,26px);opacity:0;}}
+@keyframes fall-fast{0%{transform:translate(-50%,-6px);opacity:.95;}100%{transform:translate(-50%,30px);opacity:0;}}
+
+.watering-poco .drop.d1{animation:fall-slow 1.2s linear infinite;opacity:1;}
+.watering-medio .drop.d1{animation:fall-med 0.9s linear infinite;opacity:1;}
+.watering-medio .drop.d2{animation:fall-med 0.9s linear infinite 0.45s;opacity:1;}
+.watering-mucho .drop.d1{animation:fall-fast 0.6s linear infinite;opacity:1;}
+.watering-mucho .drop.d2{animation:fall-fast 0.6s linear infinite 0.2s;opacity:1;}
+.watering-mucho .drop.d3{animation:fall-fast 0.6s linear infinite 0.4s;opacity:1;}
+
+/* Cámara */
+#camDot{width:14px;
+  height:14px;
+  border-radius:50%;
+  background:rgba(0,0,0,0.6);
+  box-shadow:0 0 6px rgba(0,0,0,0.7);
+  transition:.25s;
+  z-index:2;}
+
+.cam-on #camDot{background:var(--danger);
+  box-shadow:0 0 6px var(--danger),0 0 10px rgba(239,68,68,0.55);}
+
+
+
+.cam-on #recordCircle{opacity:1;
+  animation:pulse 1.5s infinite;}
+
+@keyframes pulse{0%{transform:scale(0.85);opacity:0.4;}50%{transform:scale(1);opacity:1;}100%{transform:scale(0.85);opacity:0.4;}}
+
+/* Panel */
+.panel{position:absolute;
+  right:14px;
+  top:14px;
+  z-index:10;
+  width:360px;
+  max-width:92vw;
+  background:var(--panel);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 16px 44px rgba(0,0,0,0.35);}
+
+.panel header{padding:12px 16px;
+  font-weight:800;
+  color:#0b1220;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  background:linear-gradient(90deg,rgba(37,99,235,.12),rgba(14,165,233,.12));}
+
+.section{padding:12px 16px;
+  border-bottom:1px solid rgba(0,0,0,0.07);}
+
+.row{display:flex;
+  align-items:center;
+  justify-content:space-between;gap:10px;}
+
+.btn{background:var(--accent);color:#fff;
+  border:none;
+  padding:8px 12px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:700;}
+
+.btn.secondary{background:#0ea5e9;}
+
+
+.btn.ghost{background:transparent;color:#0b1220;
+  border:1px solid rgba(0,0,0,0.12);}
+
+.value{font-weight:800;
+  color:#0b1220;}
+
+input[type=range]{width:100%;}
+
+.tiny{font-size:12px;
+  color:#475569;}
+
+.segmented{display:flex;gap:8px;
+  flex-wrap:wrap;}
+
+.segmented .btn{flex:1;
+  min-width:84px;}
+
+@media(max-width:900px)
+{.panel{width:calc(100% - 28px);
+  left:14px;
+  top:auto;
+  bottom:14px;}}
+
+
+/* ====== SMART HOME DASHBOARD — ESTILO FUTURISTA ====== */
+:root {
+  --accent: #3b82f6;           /* Azul brillante */
+  --accent-2: #8b5cf6;         /* Púrpura eléctrico */
+  --panel: rgba(18, 22, 28, 0.92); /* Panel translúcido oscuro */
+  --danger: #ef4444;
+  --text: #e2e8f0;             /* Gris claro */
+  --bg: #0a0e17;               /* Fondo principal */
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, Segoe UI, Roboto, Arial;
+  background: radial-gradient(circle at 30% 20%, #0d1117, #000814 90%);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Escena general */
+.scene {
+  position: relative;
+  width: min(1100px, 96vw);
+  aspect-ratio: 16/9;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #0d0f14;
+  box-shadow: 0 0 50px rgba(66, 153, 255, 0.25);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+}
+
+/* Fondo */
+.bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.92) saturate(1.1);
+  transition: .4s;
+}
+
+/* ====== Overlays ====== */
+.overlay {
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Hotspots */
+.hotspot {
+  position: absolute;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* ----- Lámpara ----- */
+#lampGlow {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 25%, rgba(255,255,180,0.95), rgba(255,230,80,0.45), rgba(255,200,60,0.06) 70%);
+  filter: blur(22px);
+  opacity: 0;
+  transition: .35s;
+  mix-blend-mode: screen;
+}
+.lamp-on #lampGlow { opacity: 1; }
+
+/* ----- Aire Acondicionado ----- */
+#acDisplay {
+  min-width: 70px;
+  height: 34px;
+  padding: 4px 10px;
+  background: rgba(10,14,22,0.75);
+  color: #7dd3fc;
+  font-weight: 800;
+  font-size: 18px;
+  border-radius: 10px;
+  text-shadow: 0 0 10px #38bdf8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: .25s;
+}
+.ac-on #acDisplay { opacity: 1; }
+
+#acWind {
+  width: 160px;
+  height: 8px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, rgba(125,211,252,0), rgba(125,211,252,.8), rgba(125,211,252,0));
+  opacity: 0;
+}
+.ac-on #acWind {
+  opacity: .9;
+  animation: drift 2s ease-in-out infinite alternate;
+}
+@keyframes drift {
+  from { transform: translateX(-12px); }
+  to { transform: translateX(12px); }
+}
+
+/* ----- Riego ----- */
+.drops-wrap {
+  position: absolute;
+  width: 36px;
+  height: 80px;
+  opacity: 0;
+  transition: opacity .2s;
+}
+.watering .drops-wrap { opacity: 1; }
+.drop {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 14px;
+  border-radius: 50% 50% 60% 60%;
+  background: rgba(125,211,252,0.9);
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.25));
+  opacity: 0;
+}
+
+/* ----- Cámara ----- */
+
+
+/* ====== PANEL ====== */
+.panel {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  z-index: 10;
+  width: 360px;
+  max-width: 92vw;
+  background: var(--panel);
+  border-radius: 18px;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 40px rgba(59,130,246,0.35);
+  border: 1px solid rgba(59,130,246,0.2);
+}
+.panel header {
+  padding: 12px 16px;
+  font-weight: 800;
+  color: #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(90deg, rgba(59,130,246,.25), rgba(139,92,246,.25));
+  text-shadow: 0 0 6px rgba(59,130,246,0.6);
+}
+.section {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* Botones */
+.btn {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: .25s;
+}
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 14px rgba(59,130,246,0.35);
+}
+.btn.secondary {
+  background: linear-gradient(90deg, #06b6d4, #3b82f6);
+}
+.btn.ghost {
+  background: transparent;
+  color: #cbd5e1;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Textos */
+.value { font-weight: 800; color: #e2e8f0; }
+.tiny { font-size: 12px; color: #94a3b8; }
+input[type=range] {
+  width: 100%;
+  accent-color: var(--accent);
+}
+.segmented {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.segmented .btn {
+  flex: 1;
+  min-width: 84px;
+}
+
+/* Responsive */
+@media (max-width:900px) {
+  .panel {
+    width: calc(100% - 28px);
+    left: 14px;
+    top: auto;
+    bottom: 14px;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, Segoe UI, Roboto, Arial;
+  background: #0a0a0a; /* Negro mate, sin gradiente */
+  color: #e2e8f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.scene {
+  position: relative;
+  width: min(1100px, 96vw);
+  aspect-ratio: 16/9;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #111; /* Negro un poco más claro para diferenciar el panel */
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ====== Cámara (LED indicador realista centrado) ====== */
+#camDot {
+  position: absolute;
+  left: 53.7%;
+  top: 20.7%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #2c2c2c;
+  box-shadow: inset 0 0 4px rgba(0,0,0,0.6);
+  opacity: 0.4;
+  transition: background 0.3s, box-shadow 0.3s, opacity 0.3s;
+  z-index: 20;
+}
+
+.cam-on #camDot {
+  background: #ef4444;
+  box-shadow: 0 0 8px #ef4444, 0 0 16px rgba(239,68,68,0.6);
+  animation: blinkCam 1.2s infinite ease-in-out;
+}
+
+
+@keyframes blinkCam {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* ===== Selector de idioma ===== */
+/* ===== Selector de idioma — Estilo Glass ===== */
+#langSelect {
+  background: rgba(30, 35, 42, 0.75);
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 6px 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  backdrop-filter: blur(8px);
+  transition: all 0.25s ease;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#langSelect:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.25);
+  transform: translateY(-1px);
+}
+
+#langSelect:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+}
+
+#langSelect option {
+  background: #0f1115;
+  color: #e2e8f0;
+  font-weight: 500;
+  border: none;
+  padding: 8px;
+}
+
+
+
+
+/* ===== Versión súper compacta y funcional para celulares ===== */
+
+
+  /* ===== 📱 Versión mobile mejorada (estilo igual de bonito que en PC) ===== */
+
+  /* ===== 📱 Versión mobile mejorada (estilo igual de bonito que en PC) ===== */
+@media (max-width: 600px) {
+    #recordCircleMobile {
+    display: block !important;
+    position: absolute;
+    top: 39%;
+    left: 76%;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ef4444;
+    box-shadow: 0 0 15px rgba(239,68,68,0.8);
+    animation: blinkMobile 1.2s infinite;
+    z-index: 100;
+  }
+
+  #recordCircle {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+  body {
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .scene {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    position: relative;
+  }
+
+  .bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    background-color: #000;
+  }
+
+  /* 🎛 Panel mejorado */
+  .panel {
+    position: absolute;
+    top: 29%;
+    left: 63%;
+    transform: translateX(-50%) scale(0.70);
+    transform-origin: top center;
+    width: 85vw;
+    max-width: 320px;
+    max-height: 85vh;
+    overflow-y: auto;
+    background: rgba(18, 22, 28, 0.92);
+    backdrop-filter: blur(12px);
+    border-radius: 18px;
+    border: 1px solid rgba(59,130,246,0.25);
+    box-shadow: 0 0 25px rgba(59,130,246,0.4);
+    color: #e2e8f0;
+    scroll-behavior: smooth;
+  }
+
+  /* ✨ Encabezado fijo con brillo */
+  .panel header {
+    position: sticky;
+    top: 0;
+    z-index: 15;
+    padding: 10px 14px;
+    background: linear-gradient(90deg, rgba(59,130,246,.25), rgba(139,92,246,.25));
+    color: #f1f5f9;
+    text-shadow: 0 0 6px rgba(59,130,246,0.6);
+    font-size: 14px;
+    font-weight: 800;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* 🌍 Selector de idioma más lindo */
+  #langSelect {
+    background: rgba(20, 25, 35, 0.75);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 5px 8px;
+    font-size: 12px;
+    color: #e2e8f0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+    backdrop-filter: blur(8px);
+  }
+
+  #langSelect:hover {
+    border-color: #38bdf8;
+    box-shadow: 0 0 10px rgba(59,130,246,0.25);
+  }
+
+  .section {
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 10px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    box-shadow: 0 0 10px rgba(59,130,246,0.25);
+  }
+
+  .btn:hover {
+    transform: scale(1.03);
+  }
+
+  .tiny {
+    font-size: 12px;
+    color: #a5b4fc;
+  }
+
+  input[type=range] {
+    width: 100%;
+    accent-color: var(--accent);
+    transform: scale(0.9);
+  }
+
+  /* 🌿 Asegura que toda la parte de riego esté visible */
+  #plantTitle, #plantSmall,
+  #btnWaterOff, #btnWaterPoco,
+  #btnWaterMedio, #btnWaterMucho {
+    display: block;
+    visibility: visible;
+  }
+
+  /* 🔹 Hotspots ajustados */
+  #hot-lamp { left: 24%; bottom: 6%; width: 45px; height: 45px; }
+  #hot-ac { left: 26%; top: 12%; width: 100px; height: 45px; }
+  #hot-plant { left: 4%; bottom: 18%; width: 120px; height: 100px; }
+  #hot-cam { right: 70%; top: 14%; width: 85px; height: 85px; }
+
+  /* 🔴 LED para cámara móvil */
+  #recordCircleMobile {
+    display: block !important;
+    position: absolute;
+    top: 37%;
+    left: 331%;
+    width: 18px;
+    height: 18px;
+    border-radius: 44%;
+    background: #ef4444;
+    box-shadow: 0 0 15px rgba(239,68,68,0.8);
+    animation: blinkMobile 1.2s infinite;
+    z-index: 100;
+  }
+
+  #recordCircle {
+  display: none;
+}
+  @keyframes blinkMobile {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+}
+
